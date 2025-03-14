@@ -70,4 +70,24 @@ def menu():
             start_date = (input("Date(MM/DD/YY): ")) 
             sindicate = bool(input("Sindicate(True/False): "))
             salary = int(input("Salary: "))
+            add_employee(employee_id, name, age, position, start_date, sindicate, salary)
         elif choice == 2:
+            employees = read_employees()
+            for emp in employees:
+                print(emp)
+        elif choice == 3:
+            employee_id = int(input("Enter ID to update data"))
+            # Missing versatile manner to update data
+        elif choice == 4:
+            employee_id = int(input("Enter ID to delete employee"))
+            delete_employee(employee_id)
+        elif choice == 5:
+            break
+        else: 
+            print('Invalid choice, please try again')
+
+menu()
+
+conn.close()
+
+        
