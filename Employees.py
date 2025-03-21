@@ -53,7 +53,7 @@ def delete_employee(employee_id):
     c.execute('''
                 DELETE FROM employees WHERE employee_id=?''',
                 (employee_id,))
-    c.commit()
+    conn.commit()
 
 
 def menu():
@@ -85,7 +85,7 @@ def menu():
                 print(emp)
         #UPDATE
         elif choice == 3:
-            employee_id = int(input("Enter ID to update data"))
+            employee_id = int(input("Enter ID to update data: "))
 
             employee = read_single_employee(employee_id)
             if employee:
@@ -101,8 +101,9 @@ def menu():
                 print('Employe not found')
         #DELETE
         elif choice == 4:
-            employee_id = int(input("Enter ID to delete employee"))
+            employee_id = int(input("Enter ID to delete employee: "))
             delete_employee(employee_id)
+            print(f"Employee with ID {employee_id} has been successfully deleted")
         elif choice == 5:
             break
         else: 
