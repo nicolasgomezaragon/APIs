@@ -1,1 +1,1 @@
-Projects to work on data ETL capabilities with Python.
+Financial API to pull data from different sources and analyze it to provide a forecast and acquisition recommendation.
