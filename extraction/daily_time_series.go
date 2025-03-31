@@ -5,7 +5,6 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
@@ -15,15 +14,15 @@ const symbol = "IBM"
 
 type TimeSeries struct {
 	MetaData MetaData `json:"Meta Data"`
-	TimeSeries map[string]Dailydata `json:"Time Series (Daily)"`
+	TimeSeries map[string]DailyData `json:"Time Series (Daily)"`
 } 
 
 type MetaData struct {
-	Information string `json: "1. Information"`
-	Symbol string `json: "2. Symbol"`
-	LastRefreshed string `json: "3. Last Refreshed"`
-	OutputSize string `json: "4. Output Size"`
-	TimeZone string `json: "5. Time Zone"` 
+	Information string `json:"1. Information"`
+	Symbol string `json:"2. Symbol"`
+	LastRefreshed string `json:"3. Last Refreshed"`
+	OutputSize string `json:"4. Output Size"`
+	TimeZone string `json:"5. Time Zone"` 
 }
 
 type DailyData struct {
@@ -48,16 +47,18 @@ func main(){
 		fmt.Println("Error: ", err)
 		return
 	}
-	defer resp.Body.Close() // What does this line do?
+	defer resp.Body.Close()
 
-	var timeSeries TimeSeries {
+	var timeSeries TimeSeries 
+	err = json.NewDecoder(resp.Body).Decode(&timeSeries)
+	if err != nil {
 		fmt.Println("Error: ", err)
 		return
 	}
 
 	fmt.Println("Meta Data: ", timeSeries.MetaData)
 	for date, data := range timeSeries.TimeSeries {
-		fmt.printf("Date: %s, Open: %s, High: %s, Low: %s, Close: %s, Volume: %s \n",
+		fmt.Printf("Date: %s, Open: %s, High: %s, Low: %s, Close: %s, Volume: %s \n",
 					date, data.Open, data.High, data.Low, data.Close, data.Volume)
 	}
 }
@@ -80,4 +81,4 @@ func readToken(filename string) (string, error){
 	return token, nil
 }
 
-#VM0SM5AWTRCSIG6T
+// #VM0SM5AWTRCSIG6T
