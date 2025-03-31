@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  Technical Analysis API 
 
 This project involves building a financial API using Go to pull data from various sources, and analyzing the data with Python to provide forecasts and recommendations.
@@ -31,3 +32,6 @@ This project involves building a financial API using Go to pull data from variou
 7. **Monitoring and Maintenance**:
    - Implement logging and monitoring.
    - Regularly update models and data sources.
+=======
+Financial API to pull data from different sources and analyze it to provide a forecast and acquisition recommendation.
+>>>>>>> 86dfdd1b05ab055c797a6b7f86d4a50fb738944b
