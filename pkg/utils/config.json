@@ -1,0 +1,12 @@
+{
+    "apiKey": "VM0SM5AWTRCSIG6T",
+    "mongoDB": {
+      "host": "localhost",
+      "database": "financial_data",
+      "collections": {
+        "rawData": "daily_data",
+        "cleanedData": "cleaned_daily_data"
+      }
+    }
+  }
+  

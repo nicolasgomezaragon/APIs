@@ -1,0 +1,35 @@
+
+### ProjectSetupGuide.txt
+
+Project Setup and Execution Guide
+
+1. **Set Up Your Environment**
+   - Install Go, Python, MongoDB.
+   - Install Python libraries: `pip install pymongo pandas`.
+
+2. **Prepare Configuration File**
+   - Create `config.json` with API key and MongoDB details.
+
+3. **Run Go Code (Data Extraction and Storage)**
+   ```sh
+   cd project/cmd
+   go run main.go
+   ```
+
+4. **Run Python Script for Data Transformation**
+   ```sh
+   cd ../scripts
+   python transform_data.py
+   ```
+
+5. **Run Python Script for Data Loading**
+   ```sh
+   python load_cleaned_data.py
+   ```
+
+### Extra Suggestions
+- Use environment variables for sensitive info.
+- Implement logging and error handling.
+- Add comments and documentation.
+- Write unit tests.
+
