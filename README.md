@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #  Technical Analysis API 
 
 This project involves building a financial API using Go to pull data from various sources, and analyzing the data with Python to provide forecasts and recommendations.
