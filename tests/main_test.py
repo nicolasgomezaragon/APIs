@@ -2,9 +2,9 @@ import os
 import tempfile
 import unittest
 from pymongo import MongoClient
-from project.pkg.utils import read_token
-from project.pkg.db import save_to_mongo_db
-from project.pkg.models import DailyData
+from pkg.utils import read_token
+from pkg.db import save_to_mongo_db
+from pkg.models import DailyData
 
 class TestUtils(unittest.TestCase):
     def test_read_token(self):
