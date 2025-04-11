@@ -1,6 +1,13 @@
-import json
 import requests
+import configparser
+
 from pkg.models import models
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+api_key = config['API']['api_key']
+symbol = config['API']['symbol']
+
 
 def fetch_time_series(api_key, symbol):
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={api_key}"

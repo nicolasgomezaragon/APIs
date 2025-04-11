@@ -1,6 +1,5 @@
 import json
-import os
-from pkg import api, db, processing, utils
+from pkg import api, db, processing
 
 class Config:
     def __init__(self, api_key, mongo_host, mongo_database, raw_data_collection, cleaned_data_collection):
@@ -47,17 +46,7 @@ def main():
         print(f"Error saving to MongoDB: {e}")
         return
 
-    # Process data (e.g., clean and transform)
-    processed_data = processing.clean_and_transform(time_series)
-
-    # Save processed data to MongoDB
-    try:
-        db.save_to_mongo_db(processed_data, config.mongo_database, config.cleaned_data_collection)
-    except Exception as e:
-        print(f"Error saving processed data to MongoDB: {e}")
-        return
-
-    print("Data processing complete!")
+    print("Data saved succesfully!")
 
 if __name__ == "__main__":
     main()
