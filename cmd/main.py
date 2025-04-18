@@ -24,7 +24,7 @@ def load_config(filename):
 
 def main():
     try:
-        config = load_config('config.json')
+        config = load_config('config.ini')
     except Exception as e:
         print(f"Error loading config: {e}")
         return
