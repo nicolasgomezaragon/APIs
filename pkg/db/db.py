@@ -1,20 +1,27 @@
 from pymongo import MongoClient
-from pkg.db import models
 
-def save_to_mongo_db(data, db_name, collection_name):
+def save_to_mongo_db(data, db_name: str, collection_name: str):
     client = MongoClient('localhost', 27017)
     db = client[db_name]
     collection = db[collection_name]
     
+    documents = []
+
     for date, daily_data in data.items():
-        document = {
-            "date": date,
-            "open": daily_data.open,
-            "high": daily_data.high,
-            "low": daily_data.low,
-            "close": daily_data.close,
-            "volume": daily_data.volume,
-        }
-        collection.insert_one(document)
+        try:
+            document = {
+                "date": date,
+                "open": float(daily_data.open),
+                "high": float(daily_data.high),
+                "low": float(daily_data.low),
+                "close": float(daily_data.close),
+                "volume": int(daily_data.volume),
+            }
+            documents.append(document)
+        except Exception as e:
+            print(f"[!] Skipping {date} due to error: {e}")
+    
+    if documents:
+        collection.insert_many(documents)  # batch insert for performance
     
     client.close()

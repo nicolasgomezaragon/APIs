@@ -1,5 +1,6 @@
 import json
-from pkg import api, db
+from pkg.api import api
+from pkg.db import db
 
 class Config:
     def __init__(self, api_key, mongo_host, mongo_database, raw_data_collection, cleaned_data_collection):

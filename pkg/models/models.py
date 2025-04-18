@@ -14,7 +14,19 @@ class DailyData:
         self.close = close
         self.volume = volume
 
+    def to_dict(self):
+        return {
+            "open": float(self.open),
+            "high": float(self.high),
+            "low": float(self.low),
+            "close": float(self.close),
+            "volume": int(self.volume),
+        }
+
 class TimeSeries:
     def __init__(self, meta_data, time_series):
         self.meta_data = MetaData(**meta_data)
-        self.time_series = {date: DailyData(**data) for date, data in time_series.items()}
+        self.time_series = {
+            date: DailyData(**data)
+            for date, data in time_series.items()
+        }
